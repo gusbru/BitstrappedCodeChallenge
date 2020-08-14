@@ -14,7 +14,7 @@ the results for a specific country code
    a. One route returns all the currencies (`/api/all`);
    b. the other route takes in a currency as a route parameter and returns the exchange
    rate for that currency (`api/CAD`);
-   c. (bonus) add another route that accepts the base as a query parameter. I.e api.com/CAD?base=USD
+   c. (**bonus**) add another route that accepts the base as a query parameter. I.e api.com/CAD?base=USD
 4. Setup docker container
 5. Deploy Node.js code on a server, any server.
 
