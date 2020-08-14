@@ -68,4 +68,4 @@ localhost:3030/api
 ## Live Demo
 
 It is possible to see the API working through the following address
-[http://bitstrappedcodechallenge.gustavobrunetto.com/api](http://bitstrappedcodechallenge.gustavobrunetto.com/api) or [http://34.71.144.216:3030/api](http://34.71.144.216:3030/api)
+[http://bitstrappedcodechallenge.gustavobrunetto.com](http://bitstrappedcodechallenge.gustavobrunetto.com/) and adding `/api` at the end of the path or [http://34.71.144.216:3030/api](http://34.71.144.216:3030/api)
