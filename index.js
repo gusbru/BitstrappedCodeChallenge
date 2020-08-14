@@ -18,7 +18,14 @@ app.get("/", async (req, res) => {
 app.get("/:country", async (req, res) => {
   try {
     const { country } = req.params;
-    const ratesObj = await Requests.get(RATES_API_URL);
+    const { base } = req.query;
+
+    let url = RATES_API_URL;
+    if (base) {
+      url += `?base=${base}`;
+    }
+
+    const ratesObj = await Requests.get(url);
     console.log(country);
     console.log(Object.keys(ratesObj.rates));
     const countyKey = Object.keys(ratesObj.rates).find(
