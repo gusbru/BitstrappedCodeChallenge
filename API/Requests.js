@@ -1,11 +1,11 @@
-import https from "https";
+const https = require("https");
 
 /**
  *
  *
  * @param {string} url
  */
-export const get = (url) =>
+const get = (url) =>
   new Promise((resolve, reject) => {
     if (!url) reject("Invalid URL");
 
@@ -30,4 +30,4 @@ const Requests = {
   get,
 };
 
-export default Requests;
+module.exports = Requests;
