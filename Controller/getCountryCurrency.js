@@ -1,6 +1,10 @@
 const Requests = require("../API/Requests.js");
 
 /**
+ * Get the currency from one specific Country.
+ *
+ * If query parameter base is specified, then change
+ * the base on which the currency is calculated.
  *
  * @param {*} req
  * @param {*} res

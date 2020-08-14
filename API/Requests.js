@@ -1,7 +1,7 @@
 const https = require("https");
 
 /**
- *
+ * Get data from another API using the https get method.
  *
  * @param {string} url
  */
