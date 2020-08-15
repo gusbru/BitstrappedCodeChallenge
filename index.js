@@ -20,7 +20,17 @@ const addApiUrl = (req, res, next) => {
   next();
 };
 
+// routes
 app.use("/api", addApiUrl, routes);
+
+// custom error handler
+app.use((err, req, res, next) => {
+  console.log("===>", err.message);
+  res.status(err.code).send({
+    code: err.code,
+    message: err.message,
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`server is running on port ${PORT}`);

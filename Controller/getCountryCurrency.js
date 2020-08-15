@@ -9,7 +9,7 @@ const Requests = require("../API/Requests.js");
  * @param {*} req
  * @param {*} res
  */
-const getCountryCurrency = async (req, res) => {
+const getCountryCurrency = async (req, res, next) => {
   try {
     const { country } = req.params;
     const { base } = req.query;
@@ -22,20 +22,26 @@ const getCountryCurrency = async (req, res) => {
 
     const ratesObj = await Requests.get(url);
 
-    const countyKey = Object.keys(ratesObj.rates).find(
+    const countryKey = Object.keys(ratesObj.rates).find(
       (item) => item.toLowerCase() === country.trim().toLowerCase()
     );
 
-    const rate = ratesObj.rates[countyKey];
+    if (!countryKey) {
+      throw new Error("invalid country");
+    }
+
+    const rate = ratesObj.rates[countryKey];
     const ansObj = {
-      country: countyKey,
+      country: countryKey,
       rate,
     };
 
     res.json(ansObj);
   } catch (error) {
-    console.log("error", error);
-    res.status(500).send(error.message);
+    console.log(error);
+    const customError = new Error(error.message);
+    customError.code = 404;
+    next(customError);
   }
 };
 
