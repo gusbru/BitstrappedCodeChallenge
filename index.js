@@ -1,6 +1,6 @@
 const express = require("express");
 const routes = require("./routes");
-raconst addApiUrl = require("./Utils/addURL");
+const addApiUrl = require("./Utils/addURL");
 const dotenv = require("dotenv");
 dotenv.config();
 
