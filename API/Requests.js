@@ -17,7 +17,12 @@ const get = (url) =>
       });
 
       res.on("end", () => {
-        resolve(JSON.parse(payload));
+        try {
+          const result = JSON.parse(payload);
+          resolve(result);
+        } catch (error) {
+          reject(error);
+        }
       });
     });
 
