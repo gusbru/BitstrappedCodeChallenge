@@ -1,31 +1,18 @@
 const express = require("express");
 const routes = require("./routes");
+raconst addApiUrl = require("./Utils/addURL");
+const dotenv = require("dotenv");
+dotenv.config();
 
 const app = express();
 
-const RATES_API_URL = "https://api.ratesapi.io/api/latest";
-const PORT = 3030;
-
-/**
- * Add the api url into the req object. In this way the
- * URL is available to all functions
- *
- * @param {Request<ParamsDictionary, any, any, qs.ParsedQs>} req
- * @param {*} res
- * @param {*} next
- */
-const addApiUrl = (req, res, next) => {
-  req.apiURL = RATES_API_URL;
-
-  next();
-};
+const PORT = process.env.PORT;
 
 // routes
 app.use("/api", addApiUrl, routes);
 
 // custom error handler
 app.use((err, req, res, next) => {
-  console.log("===>", err.message);
   res.status(err.code).send({
     code: err.code,
     message: err.message,

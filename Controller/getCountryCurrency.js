@@ -6,8 +6,8 @@ const Requests = require("../API/Requests.js");
  * If query parameter base is specified, then change
  * the base on which the currency is calculated.
  *
- * @param {*} req
- * @param {*} res
+ * @param {*} req request object
+ * @param {*} res response object
  */
 const getCountryCurrency = async (req, res, next) => {
   try {
@@ -27,7 +27,9 @@ const getCountryCurrency = async (req, res, next) => {
     );
 
     if (!countryKey) {
-      throw new Error("invalid country");
+      const customError = new Error("Country not found");
+      customError.code = 200;
+      throw customError;
     }
 
     const rate = ratesObj.rates[countryKey];
@@ -38,9 +40,8 @@ const getCountryCurrency = async (req, res, next) => {
 
     res.json(ansObj);
   } catch (error) {
-    console.log(error);
     const customError = new Error(error.message);
-    customError.code = 404;
+    customError.code = error.code ? error.code : 500;
     next(customError);
   }
 };

@@ -3,8 +3,8 @@ const Requests = require("../API/Requests.js");
 /**
  * Get all the currencies and return them
  *
- * @param {*} req
- * @param {*} res
+ * @param {*} req request object
+ * @param {*} res response object
  */
 const getAllCurrencies = async (req, res, next) => {
   try {
