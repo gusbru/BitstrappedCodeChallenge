@@ -20,18 +20,22 @@ const getCountryCurrency = async (req, res, next) => {
     // check if a base was given
     if (base) url += `?base=${base}`;
 
+    // requenst from external API
     const ratesObj = await Requests.get(url);
 
+    // search for country
     const countryKey = Object.keys(ratesObj.rates).find(
       (item) => item.toLowerCase() === country.trim().toLowerCase()
     );
 
+    // country not found
     if (!countryKey) {
       const customError = new Error("Country not found");
       customError.code = 200;
       throw customError;
     }
 
+    // build the response object
     const rate = ratesObj.rates[countryKey];
     const ansObj = {
       country: countryKey,
