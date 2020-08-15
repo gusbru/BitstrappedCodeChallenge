@@ -79,6 +79,8 @@ returns the currency for `Canada`.
 To change the base currency, add the `?base=` query at the end of the address, e.g., `/CAD?base=USD` to
 change the base to `USD`.
 
+The API documentation can be found [here](https://documenter.getpostman.com/view/3652511/T1LPDn4J)
+
 ## Live Demo
 
 It is possible to see the API working through the following address
