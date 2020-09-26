@@ -81,7 +81,3 @@ change the base to `USD`.
 
 The API documentation can be found [here](https://documenter.getpostman.com/view/3652511/T1LPDn4J)
 
-## Live Demo
-
-It is possible to see the API working through the following address
-[http://bitstrappedcodechallenge.gustavobrunetto.com](http://bitstrappedcodechallenge.gustavobrunetto.com/) or [http://34.71.144.216:3030/api](http://34.71.144.216:3030/api)
